@@ -63,20 +63,37 @@
 
 .contactItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
 .icon {
   color: var(--color-primary);
+  margin-top: 0.125rem;
+}
+
+.contactMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.contactLabel {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
 }
 
 .contactText,
 .contactLink {
   font-family: var(--font-sans);
   font-size: clamp(0.75rem, 1.5vw, 0.875rem);
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   word-break: break-all;
+  line-height: 1.6;
 }
 
 .contactLink {

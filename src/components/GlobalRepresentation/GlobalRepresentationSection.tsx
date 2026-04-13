@@ -26,14 +26,16 @@ export const GlobalRepresentationSection: React.FC = () => {
         </h2>
         <p className={styles.description}>{data.description}</p>
 
-        <div className={styles.features}>
-          {data.features.map((feature, index) => (
-            <div key={index} className={styles.feature}>
-              <h4 className={styles.featureTitle}>{feature.title}</h4>
-              <p className={styles.featureDescription}>{feature.description}</p>
-            </div>
-          ))}
-        </div>
+        {data.features.length > 0 ? (
+          <div className={styles.features}>
+            {data.features.map((feature, index) => (
+              <div key={index} className={styles.feature}>
+                <h4 className={styles.featureTitle}>{feature.title}</h4>
+                <p className={styles.featureDescription}>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
     </section>
   );

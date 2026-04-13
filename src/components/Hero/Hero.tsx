@@ -15,10 +15,11 @@ export const Hero: React.FC = () => {
           fallbackClassName={styles.bgFallback}
           fetchPriority="high"
         />
-        <div className="hero-gradient" style={{ position: 'absolute', inset: 0 }}></div>
+        <div className={styles.overlay}></div>
+        <div className={styles.textShade}></div>
       </div>
 
-      <div className={`container ${styles.content}`}>
+      <div className={styles.content}>
         <span className={styles.subtitle}>{siteData.hero.subtitle}</span>
 
         <h1 id="hero-title" className={styles.title}>
@@ -29,10 +30,18 @@ export const Hero: React.FC = () => {
         <p className={styles.description}>{siteData.hero.description}</p>
 
         <div className={styles.actions}>
-          <Button variant="primary" href={siteData.hero.ctaPrimary.href}>
+          <Button
+            variant="primary"
+            href={siteData.hero.ctaPrimary.href}
+            className={styles.heroButton}
+          >
             {siteData.hero.ctaPrimary.label}
           </Button>
-          <Button variant="secondary" href={siteData.hero.ctaSecondary.href}>
+          <Button
+            variant="secondary"
+            href={siteData.hero.ctaSecondary.href}
+            className={`${styles.heroButton} ${styles.heroButtonSecondary}`}
+          >
             {siteData.hero.ctaSecondary.label}
           </Button>
         </div>

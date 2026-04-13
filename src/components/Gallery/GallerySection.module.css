@@ -18,7 +18,7 @@
 @media (min-width: 768px) {
   .headerRow {
     flex-direction: row;
-    align-items: flex-end;
+    align-items: flex-start;
   }
 }
 
@@ -46,12 +46,13 @@
 }
 
 .description {
-  max-width: 20rem;
+  max-width: 32rem;
   color: var(--color-on-surface-variant);
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   font-weight: 300;
-  line-height: 1.625;
+  line-height: 1.75;
   margin: 0;
+  white-space: pre-line;
 }
 
 .grid {
@@ -121,13 +122,15 @@
   font-family: var(--font-serif);
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
   margin: 0 0 0.25rem 0;
+  line-height: 1.3;
 }
 
 .memberRole {
   color: var(--color-primary);
-  font-size: clamp(0.65rem, 1.25vw, 0.75rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 700;
+  font-size: clamp(0.875rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 1.6;
   margin: 0;
 }
