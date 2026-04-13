@@ -52,7 +52,7 @@ export const ContactSection: React.FC = () => {
     if (!emailIsValid) {
       setStatus({
         type: 'error',
-        message: 'Please enter a valid email address so the management team can reply.',
+        message: 'Please enter a valid email address so Samira can reply.',
       });
       return;
     }
@@ -86,17 +86,22 @@ export const ContactSection: React.FC = () => {
           <p className={styles.description}>{data.description}</p>
 
           <div className={styles.contactDetails}>
-            <div className={styles.contactItem}>
-              <span className={`material-symbols-outlined ${styles.icon}`}>mail</span>
-              <a className={styles.contactLink} href={`mailto:${data.email}`}>
-                {data.emailDisplay}
-              </a>
-            </div>
-
-            <div className={styles.contactItem}>
-              <span className={`material-symbols-outlined ${styles.icon}`}>location_on</span>
-              <span className={styles.contactText}>{data.locations}</span>
-            </div>
+            {data.contactMethods.map((method) => (
+              <div key={method.label} className={styles.contactItem}>
+                <span className={`material-symbols-outlined ${styles.icon}`}>{method.icon}</span>
+                <div className={styles.contactMeta}>
+                  <span className={styles.contactLabel}>{method.label}</span>
+                  <a
+                    className={styles.contactLink}
+                    href={method.href}
+                    target={method.href.startsWith('https://') ? '_blank' : undefined}
+                    rel={method.href.startsWith('https://') ? 'noreferrer' : undefined}
+                  >
+                    {method.value}
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

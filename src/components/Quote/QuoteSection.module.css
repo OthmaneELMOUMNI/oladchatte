@@ -19,13 +19,14 @@
 }
 
 .text {
-  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-size: clamp(1.85rem, 4.5vw, 3.25rem);
   font-family: var(--font-serif);
   font-style: italic;
-  max-width: 56rem;
-  line-height: 1.375;
+  max-width: 50rem;
+  line-height: 1.5;
   margin: 0;
   word-wrap: break-word;
+  white-space: pre-line;
 }
 
 .divider {
