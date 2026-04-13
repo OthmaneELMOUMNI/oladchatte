@@ -1,20 +1,21 @@
 import React from 'react';
 import { siteData } from '../../data/mockData';
 import { Button } from '../Button/Button';
-import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback';
 import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.background}>
-        <ImageWithFallback
-          src={siteData.hero.bgImage}
-          alt="Oulad Chatta performing in a desert landscape"
-          className={styles.bgImage}
-          fallbackClassName={styles.bgFallback}
-          fetchPriority="high"
-        />
+        <picture className={styles.picture}>
+          <source media="(max-width: 640px)" srcSet={siteData.hero.bgImageMobile} />
+          <img
+            src={siteData.hero.bgImage}
+            alt="Oulad Chatta performing live on stage"
+            className={styles.bgImage}
+            fetchPriority="high"
+          />
+        </picture>
         <div className={styles.overlay}></div>
         <div className={styles.textShade}></div>
       </div>
