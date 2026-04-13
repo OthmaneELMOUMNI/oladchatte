@@ -1,0 +1,16 @@
+{
+  "name": "Oulad Chatta",
+  "short_name": "Oulad Chatta",
+  "description": "A Hassani heritage ensemble preserving Sahrawi poetry, music, and oral memory.",
+  "background_color": "#131313",
+  "theme_color": "#131313",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+.fallback {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background:
+    radial-gradient(circle at top left, rgba(233, 193, 118, 0.22), transparent 38%),
+    linear-gradient(140deg, rgba(90, 69, 34, 0.85), rgba(19, 19, 19, 0.98));
+  color: var(--color-on-surface);
+  overflow: hidden;
+}
+
+.label {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  max-width: 14ch;
+}

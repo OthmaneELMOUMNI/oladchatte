@@ -1,0 +1,127 @@
+.ancestry {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  background-color: var(--color-surface);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(3rem, 6vw, 4rem);
+  align-items: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin: 0;
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 3.75rem); /* Fluis scaled title */
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.1;
+  margin: 0;
+  word-wrap: break-word;
+}
+
+.paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  line-height: 1.625;
+}
+
+.paragraphs p {
+  margin: 0;
+}
+
+.quoteBlock {
+  padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+.divider {
+  height: 1px;
+  width: clamp(4rem, 10vw, 8rem);
+  background-color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.quote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .imageGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
+
+.imageWrapper1 {
+  /* Only pad top on desktop to stagger */
+}
+
+@media (min-width: 1024px) {
+  .imageWrapper1 {
+    padding-top: 6rem;
+  }
+}
+
+.image1, .image2 {
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+}
+
+.image1 {
+  height: clamp(300px, 40vw, 500px);
+  filter: grayscale(100%);
+  transition: all 0.7s ease;
+}
+
+.image1:hover {
+  filter: grayscale(0%);
+}
+
+.image2 {
+  height: clamp(350px, 50vw, 600px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}

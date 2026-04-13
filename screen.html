@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE ETERNAL ECHO | Oulad Chatta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;600;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "secondary-fixed": "#fbdeb9",
+                      "primary-fixed-dim": "#e9c176",
+                      "primary-fixed": "#ffdea5",
+                      "surface-tint": "#e9c176",
+                      "inverse-primary": "#775a19",
+                      "primary": "#e9c176",
+                      "outline": "#9a8f80",
+                      "on-surface-variant": "#d1c5b4",
+                      "tertiary-fixed-dim": "#ffb59c",
+                      "primary-container": "#c5a059",
+                      "on-secondary-container": "#ccb18e",
+                      "surface": "#131313",
+                      "on-error": "#690005",
+                      "error-container": "#93000a",
+                      "on-primary-fixed-variant": "#5d4201",
+                      "surface-container-lowest": "#0e0e0e",
+                      "outline-variant": "#4e4639",
+                      "on-secondary": "#3e2d14",
+                      "surface-bright": "#393939",
+                      "on-secondary-fixed-variant": "#564428",
+                      "surface-variant": "#353535",
+                      "surface-container-highest": "#353535",
+                      "on-primary": "#412d00",
+                      "tertiary-container": "#e49073",
+                      "tertiary": "#ffb59c",
+                      "secondary-container": "#564428",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary-fixed": "#390c00",
+                      "surface-dim": "#131313",
+                      "surface-container": "#20201f",
+                      "secondary-fixed-dim": "#dec29f",
+                      "surface-container-high": "#2a2a2a",
+                      "on-error-container": "#ffdad6",
+                      "tertiary-fixed": "#ffdbcf",
+                      "on-tertiary-container": "#642913",
+                      "on-tertiary-fixed-variant": "#73351e",
+                      "on-background": "#e5e2e1",
+                      "secondary": "#dec29f",
+                      "on-secondary-fixed": "#271903",
+                      "on-primary-container": "#4e3700",
+                      "on-surface": "#e5e2e1",
+                      "on-primary-fixed": "#261900",
+                      "inverse-surface": "#e5e2e1",
+                      "on-tertiary": "#561f0a",
+                      "inverse-on-surface": "#313030",
+                      "background": "#131313"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "fontFamily": {
+                      "headline": ["Noto Serif"],
+                      "body": ["Manrope"],
+                      "label": ["Manrope"]
+              }
+            },
+          }
+        }
+    </script>
+<style>body {
+    background-color: #131313;
+    color: #e5e2e1;
+    font-family: "Manrope", sans-serif
+    }
+.font-serif {
+    font-family: "Noto Serif", serif
+    }
+.font-sans {
+    font-family: "Manrope", sans-serif
+    }
+.tonal-shift-via-opacity {
+    background-color: rgba(10, 10, 10, 0.4);
+    backdrop-filter: blur(20px)
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.02;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuD8G34KlFXnOF5-EV_V4cNYejGo4Sbr2GmxuxCvlze9tOcPth3jWhhuRCrmp6Nz3dDGj3ZOaWELpzDg7H8uFKr0oAAh6i8rJdkku6OZCIvEemE-FpMMSP374hkYkcBhopapMCGl0j0cTHpbiPkyXkvRo1a5vOEqP3bSFsKUeFO2XkHAXP7RiISIcV44MemM0O-SkWvsfOZDOhQpItgFKKFHoqFQs57LEOvvQqmwZx6wF5HHMM3YtRyvrgXEEkYc5oUsH2EqTiwC_VXM)
+    }
+.hero-gradient {
+    background: linear-gradient(to bottom, rgba(19, 19, 19, 0) 0%, rgba(19, 19, 19, 1) 100%)
+    }
+.text-glow {
+    text-shadow: 0 0 20px rgba(233, 193, 118, 0.3)
+    }</style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<div class="grain-overlay"></div>
+<!-- Navigation (TopNavBar Shared Component) -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-12 py-6 w-full max-w-none bg-neutral-950/40 backdrop-blur-xl">
+<div class="text-2xl font-serif tracking-tighter text-yellow-400 dark:text-yellow-200">
+            THE ETERNAL ECHO
+        </div>
+<div class="hidden md:flex items-center space-x-12">
+<a class="text-yellow-400 border-b border-yellow-400/50 pb-1 font-sans tracking-widest uppercase text-xs hover:text-yellow-200 transition-colors duration-500" href="#">ENSEMBLE</a>
+<a class="text-neutral-300 font-sans tracking-widest uppercase text-xs hover:text-yellow-200 transition-colors duration-500" href="#">ARCHIVE</a>
+<a class="text-neutral-300 font-sans tracking-widest uppercase text-xs hover:text-yellow-200 transition-colors duration-500" href="#">CALENDAR</a>
+<a class="text-neutral-300 font-sans tracking-widest uppercase text-xs hover:text-yellow-200 transition-colors duration-500" href="#">ACADEMY</a>
+</div>
+<button class="px-6 py-2 bg-primary text-on-primary text-[10px] tracking-[0.2em] font-bold uppercase rounded-md hover:bg-primary-container transition-all duration-500 shadow-lg shadow-primary/10">
+            BOOK PERFORMANCE
+        </button>
+</nav>
+<!-- Hero Section -->
+<section class="relative h-screen flex flex-col justify-end items-start px-12 pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="cinematic silhouette of sahrawi musicians against a vast starry desert night sky with golden moonlight illuminating sand dunes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoCgByl-pNOcFol7VR8ddSoyH6ItyL6iB0nZgQyU1HJKteSQMTGGggaLJexZ1qBFLGzWffHXpq85Koiu1YHEJRFz57auN-OfdTCurBxQJQyp8qn2B5_E3XZ9LCd5pGWnEOrm1bw4IotjXkGdjC52xdUhGctquWgcEEjtVKDC9RLwr2hT7A4zQwxxivktvQ_y7c7jcsYm61I7tRfs8Rw6EFOxLfUPAp0ERTALottsck21usKzF_GK-rzT-Y479Q4rlr6Akkpj2Htfm-"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<div class="relative z-10 max-w-4xl space-y-6">
+<span class="font-sans text-xs tracking-[0.5em] uppercase text-primary mb-4 block">Hassani Heritage</span>
+<h1 class="text-6xl md:text-8xl font-serif italic text-glow leading-tight tracking-tighter">
+                Oulad Chatta: <br/>
+<span class="text-on-surface opacity-90">A Living Voice of the Desert</span>
+</h1>
+<p class="text-xl font-body text-on-surface-variant max-w-2xl font-light leading-relaxed">
+                Preserving Sahrawi Hassani Poetry &amp; Music Heritage since 1990.
+            </p>
+<div class="pt-8 flex gap-8">
+<button class="px-10 py-4 bg-primary text-on-primary rounded-md font-bold text-xs tracking-widest uppercase hover:scale-[1.02] transition-transform duration-300">
+                    Experience the Heritage
+                </button>
+<button class="px-10 py-4 border border-outline-variant/30 text-on-surface rounded-md font-bold text-xs tracking-widest uppercase hover:bg-on-surface/5 transition-all duration-300 backdrop-blur-sm">
+                    Watch Archive
+                </button>
+</div>
+</div>
+</section>
+<!-- The Ancestry (Editorial Section) -->
+<section class="py-32 px-12 bg-surface">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-start">
+<div class="md:col-span-5 space-y-12">
+<div class="space-y-4">
+<h2 class="text-xs tracking-[0.4em] uppercase text-primary font-bold">The Ancestry</h2>
+<h3 class="text-5xl font-serif italic leading-tight">Born of the Desert, <br/>Carried by Love</h3>
+</div>
+<div class="space-y-6 text-on-surface-variant font-light text-lg leading-relaxed">
+<p>In 1895, a journey began across the shifting sands of the Tata region. It was here that Chatta, a master of desert poetry and resonance, laid the foundations of what would become a generational legacy.</p>
+<p>Today, Oulad Chatta stands as the quintessential vessel for the Sahrawi spirit. Their music is not merely performance; it is a ritual of memory, an echo of the wind through the acacia trees, and the pulse of the Saharan night.</p>
+</div>
+<div class="pt-6">
+<div class="h-[1px] w-32 bg-primary mb-4"></div>
+<p class="font-serif italic text-xl text-primary">"The sand remembers every song we never finished."</p>
+</div>
+</div>
+<div class="md:col-span-7 grid grid-cols-2 gap-4">
+<div class="pt-24">
+<img class="rounded-xl w-full h-[500px] object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="close-up of weathered hands playing a traditional guembri instrument with gold jewelry details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv__7cwNmVSMqr1wIqQiRFor8GybTJDufKNYuyjMHBh0a5F-QKT99tnz2qDqQ_XzLCWFMZ2gl1L2PwO09fUYBtLGTfS12usDdB3j9Nrf7mTJLWi4wcIsfdXzKDSM8EDj3pUXDcjuGzRpOO8-_YgjvW70Eqr3pZQmzIKv5CKMtpBu2B2cUgDvM5kpUahowSDlpTq4lVnuX5PKlhZ2FEBhUaavx06Bux-eBGMuHRmrYcW3M38-mEijElfD7MfHMcP1QlGv9TShkQjJKU"/>
+</div>
+<div>
+<img class="rounded-xl w-full h-[600px] object-cover shadow-2xl" data-alt="aerial view of a caravan traveling across the sahara dunes at sunset with long dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsE8JPPNX5oeew6YcoWQAnZtyUq3OHma0x3rgzQLAAGGOnw7FMhyoYrF_1hhWla1ufow19BVUMglfa3mJch3QIteQsHvdHRxSgnR5SRpPKUkg-dfKY71mvLhviAncVmztYS_Vo_h6A0agW0Hr-_MdieVsFO47HvNeO4vMOhLcsOspFzv6rAaj-T9zyYgKRfkDSCVMLyewKr3_zozxH3_8GqzjKF6tEQuxZFuGRDdaB_8O5BQozXFJ9RELVMd82-sRJj5XQVDv_YC_k"/>
+</div>
+</div>
+</div>
+</section>
+<!-- The Keepers of the Song (Gallery) -->
+<section class="py-32 bg-surface-container-low px-12">
+<div class="flex justify-between items-end mb-20">
+<div class="space-y-4">
+<h2 class="text-xs tracking-[0.4em] uppercase text-primary font-bold">The Ensemble</h2>
+<h3 class="text-5xl font-serif">The Keepers of the Song</h3>
+</div>
+<p class="max-w-xs text-on-surface-variant text-sm font-light leading-relaxed">
+                Six masters of resonance, each a guardian of a specific thread in the tapestry of Hassani culture.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Member 1 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Omar, an elderly Sahrawi man with deep expressive eyes wearing a traditional blue darrâa" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_NGSTlaiaxTMnJmvOpkJxqUJb0pP1-EiAg8Vi4AlMlvGt4W2I3v4eAsCxX2GY-x_IYY7-IUeS5FEJykRhNekxB5aXICK7i4fIdy8g-yBMrzZsZSGicBUVFGaoJvfeCJ0mQDejJwhbbr8_W2QS1x-6c9R_8WOyNmSPKzD2T-k-0x4MvGCemrsMYQCPZKW0jnJdrjo-QFVqypEoxja9p-CMpDI4AN8DlX02NxPB3cIcne1AtvkKbrD1yK8K1RBrSGRbohwqLHBacrza"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Omar</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">Master of the Guembri</p>
+</div>
+<!-- Member 2 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Mustapha, a dignified musician holding a traditional drum with tribal patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChxUUr1bCzcLH-wqibyQtBTf-KoiFSahhmk3HUx3Lec5HG8CXaoG575-BRgOEB8SRHw-i6rTYEJGas5KI96RP3X6elCHiFJxYKkvpM_ZLLUq4XY3aR4RXSVcUGy9lbT9sLmTZNd9_COqbJV2hjZt7Ienqgn-jfdQvRintFH7zZVpSGFR7fxApuc08ldjNWKOQsuAPexlHUFkJZT0ShGHWAi6y4YCQxGu3pr5hdBgePXMZ-NY5g16-Wn4N5MvQpBbz5P8-A9hlAeWgP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Mustapha</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">Guardian of the Guedra</p>
+</div>
+<!-- Member 3 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Abdul Majid singing with intense emotion, head tilted back slightly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-dVXuZ35SwV6MbdPYCnKBbMQ3kY3IZ8eKiZx-u-KAYf2FVQTg4J-17EyNkFiaObjAJWLaPZQRRCoteytBt_ckwmKIgcS7MxJtpOEOFCYAgqnQS9GEfUFwDuN5rvlIy3wCY9GNDkFYTbaQovwwVOV8UTKHvxDokp3VLZTsUb0GmFmDunrcuaVPbDZgParYwPPz-IlkjxeEmimGuBauq3QxHPcPm7E7-4hEaYflvd-tQj3qKg9DRAErQD2Wj5vYYQ41rKyAnXEWQDQh"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Abdul Majid</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">The Poet's Voice</p>
+</div>
+<!-- Member 4 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Al-Habib smiling warmly, wearing traditional Sahrawi headgear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYe_0kalDjOnlt-OcVDVFGCQI2_zB8joNoUFIKoMPYvQBhYKeg75IPY2BN_ZmYgt1Wzez2rxob4nvptLx-5jKMUNoPsAqmRUCwAKfw2my4LAZqe2zDsFQ_QVQLqfbcb5sJ_CDj6Z8gwqMJ_ZL1TCAH6yXG4q1jfQLRXKcUT3kverFjMNCGQQXr5vR25RPxhV24VmwzZtSH17OGygqmKEZQIawtBOYZ0RyU94gTMeturSf9px4ibRltnEb1yHghzBZBbjnbe-ZG4m7a"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Al-Habib</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">Master of Rhythm</p>
+</div>
+<!-- Member 5 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Mohamed Qadir playing a string instrument with focused precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnbTJMlqFWnrO4qlyS3-isL5PzOFwIn5QKq10hBd3wat992Bfh4tqqMeohZl2p-z7Yf8nl2Ezg1YGG94OTal5C90loDzKBHOuNncrduycrrP9c7DWtdERHORQWlWdpYFNmTAQRxb3avDIFhPaiRrYJNmjD5DYdtIwB8bNAIKuheF8UGyiYuBbE3vqzPk0gHFUFZO49T2jp9MZbYMr6Il67n3sAwtQ5p-9yXQtNNN18fSCWh4Jn9KtGYw1Fk5-75EGxTNgVggyS26Hs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Mohamed Qadir</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">Strings of the Soul</p>
+</div>
+<!-- Member 6 -->
+<div class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl h-[450px] mb-6">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" data-alt="portrait of Hajj Muhammad, an elder statesman of music with white beard and regal presence" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0aDLNWuKm4h3rsz30AfdY1Oi8-ynnae4m8X3QQvP5_6EaTgC_vYgN7FnBoOOu71tgb-oUw202GgS08CleHKVLv4x44aFadj3SnGaPwWE3oTVJnBkj59B6brrKTROpS98-PnyQ-7kzky2PGpYUzBSS351JNrRyXOG959QETF2lFCcbzi5xmgo7c6cD_l-RuQMD-FeklHDhvVCFhPKe1Udmv-XYxF3F_jQ2FVirpZ1RFuNDCY-Z70RZDJv1jxk4xpBSme27DL29BNLC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+</div>
+<h4 class="font-serif text-2xl mb-1">Hajj Muhammad</h4>
+<p class="text-primary text-xs tracking-widest uppercase font-bold">The Oral Historian</p>
+</div>
+</div>
+</section>
+<!-- Quote Section (Our Promise) -->
+<section class="py-48 bg-surface flex flex-col items-center justify-center text-center px-6">
+<span class="material-symbols-outlined text-primary text-5xl mb-12" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<h2 class="text-4xl md:text-6xl font-serif italic max-w-4xl leading-snug">
+            "We sing because we love. We perform because we remember."
+        </h2>
+<div class="mt-12 h-[1px] w-24 bg-outline-variant/30"></div>
+<p class="mt-6 text-xs tracking-[0.4em] uppercase text-on-surface-variant">The Eternal Vow</p>
+</section>
+<!-- Global Representation -->
+<section class="py-32 px-12 bg-surface-container-high relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
+<img class="w-full h-full object-contain" data-alt="minimalist world map with glowing dots indicating international festival locations" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSx-PnOWnzsnYct91E4e1E0mYyFUpt4toQAXasoQhoVUK8-3F7FTFyLbcZuvvMtrraq0GoutLrHrKMl2DTT8wwU5OE4MFWMl-slR1ozbYzXvr8TtPZAtYx-4w7t9x_h8beLkHGMpyt4hwpUJw73_auprI1gXOy2EWlOmY3WfCK4SWxv-2-kqqHXUXcJtFmgTmAAa7jSzZLyeiVe8-3zoK32qlCs5w854oRZJchktI3aYxRgHreRmYODCxYHIFbhQSwkAfXWZ-FHdCD"/>
+</div>
+<div class="max-w-3xl relative z-10">
+<h2 class="text-xs tracking-[0.4em] uppercase text-tertiary font-bold mb-6">Special Star SARL</h2>
+<h3 class="text-5xl font-serif mb-8">Global Representation</h3>
+<p class="text-on-surface-variant font-light text-xl leading-relaxed mb-12">
+                Oulad Chatta is exclusively managed and represented globally by Special Star SARL. We facilitate seamless collaborations between these desert masters and international festival promoters, ensuring the highest standards of cultural production.
+            </p>
+<div class="grid grid-cols-2 gap-12">
+<div>
+<h4 class="text-primary text-xs tracking-widest uppercase mb-4">International Touring</h4>
+<p class="text-sm text-on-surface-variant font-light">Full logistical support for European, Asian, and American festival circuits.</p>
+</div>
+<div>
+<h4 class="text-primary text-xs tracking-widest uppercase mb-4">Cultural Education</h4>
+<p class="text-sm text-on-surface-variant font-light">Curated masterclasses and academic residencies for institutions.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking / Contact Form -->
+<section class="py-32 px-12 bg-surface grid grid-cols-1 md:grid-cols-2 gap-24 items-start">
+<div class="space-y-12">
+<div class="space-y-4">
+<h2 class="text-xs tracking-[0.4em] uppercase text-primary font-bold">Inquiries</h2>
+<h3 class="text-5xl font-serif">Secure the Legacy</h3>
+</div>
+<p class="text-on-surface-variant font-light text-lg">
+                For booking inquiries, press kits, and archival research requests, please use the form below. Our management team will respond within 48 hours.
+            </p>
+<div class="space-y-6 pt-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="font-sans text-sm tracking-widest">MANAGEMENT@ETERNALECHO.COM</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="font-sans text-sm tracking-widest">CASABLANCA | TATA | PARIS</span>
+</div>
+</div>
+</div>
+<form class="bg-surface-container-low p-12 rounded-xl space-y-8 glassmorphism border border-white/5">
+<div class="space-y-2">
+<label class="text-[10px] tracking-widest uppercase text-on-surface-variant">Full Name</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-primary transition-colors text-on-surface px-0 py-2" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] tracking-widest uppercase text-on-surface-variant">Organization / Ministry</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-primary transition-colors text-on-surface px-0 py-2" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] tracking-widest uppercase text-on-surface-variant">Email Address</label>
+<input class="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-primary transition-colors text-on-surface px-0 py-2" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] tracking-widest uppercase text-on-surface-variant">Message / Inquiry Details</label>
+<textarea class="w-full bg-transparent border-0 border-b border-outline-variant/30 focus:ring-0 focus:border-primary transition-colors text-on-surface px-0 py-2 resize-none" rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary font-bold text-xs tracking-[0.3em] uppercase rounded-md hover:bg-primary-container transition-all duration-500 mt-4">
+                SEND INQUIRY
+            </button>
+</form>
+</section>
+<!-- Footer Shared Component -->
+<footer class="flex flex-col items-center justify-center py-20 px-4 border-t border-white/5 bg-neutral-950">
+<div class="font-serif text-lg text-yellow-400 mb-12">THE ETERNAL ECHO</div>
+<div class="flex gap-12 mb-12">
+<a class="font-serif text-sm tracking-widest text-neutral-500 hover:text-yellow-400 transition-all duration-700" href="#">PRIVACY</a>
+<a class="font-serif text-sm tracking-widest text-neutral-500 hover:text-yellow-400 transition-all duration-700" href="#">ARCHIVE POLICY</a>
+<a class="font-serif text-sm tracking-widest text-neutral-500 hover:text-yellow-400 transition-all duration-700" href="#">CONTACT</a>
+</div>
+<div class="text-center font-serif text-sm tracking-widest text-neutral-500 opacity-60">
+            © 2024 THE ETERNAL ECHO. CURATED BY ANCESTRAL RESONANCE AGENCY.
+        </div>
+</footer>
+</body></html>
