@@ -1,4 +1,5 @@
-import heroHome from '../assets/hero-home-wide.png';
+import heroHome from '../assets/hero-home-stage.png';
+import heroHomeMobile from '../assets/hero-home-mobile.png';
 
 type SectionLink = {
   name: string;
@@ -31,6 +32,7 @@ type SiteData = {
     ctaPrimary: ActionLink;
     ctaSecondary: ActionLink;
     bgImage: string;
+    bgImageMobile: string;
   };
   ancestry: {
     subtitle: string;
@@ -111,6 +113,7 @@ export const siteData = {
       href: '#ensemble',
     },
     bgImage: heroHome,
+    bgImageMobile: heroHomeMobile,
   },
   ancestry: {
     subtitle: 'The Lineage',
