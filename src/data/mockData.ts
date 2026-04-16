@@ -1,5 +1,4 @@
 import heroHome from '../assets/hero-home-stage.png';
-import heroHomeMobile from '../assets/hero-home-mobile.png';
 
 type SectionLink = {
   name: string;
@@ -113,7 +112,7 @@ export const siteData = {
       href: '#ensemble',
     },
     bgImage: heroHome,
-    bgImageMobile: heroHomeMobile,
+    bgImageMobile: heroHome,
   },
   ancestry: {
     subtitle: 'The Lineage',
