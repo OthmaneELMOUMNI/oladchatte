@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /c/Users/hp/Desktop/oladchatta/oladchatte/public -type f -exec ls -lh {} \\\\;)",
+      "Bash(awk '{print $5, $9}')",
+      "Bash(find /c/Users/hp/Desktop/oladchatta/oladchatte/src -type f \\\\\\( -name \"*.png\" -o -name \"*.jpg\" -o -name \"*.jpeg\" -o -name \"*.svg\" -o -name \"*.webp\" \\\\\\) -exec ls -lh {} \\\\;)",
+      "Bash(grep -n \"os\\\\|process\\\\|require\\\\|eval\" /c/Users/hp/Desktop/oladchatta/oladchatte/src/**/*.tsx)",
+      "Bash(npm run *)"
+    ]
+  }
+}
