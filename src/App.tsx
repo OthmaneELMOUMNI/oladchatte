@@ -8,6 +8,7 @@ import { QuoteSection } from './components/Quote/QuoteSection';
 import { GlobalRepresentationSection } from './components/GlobalRepresentation/GlobalRepresentationSection';
 import { ContactSection } from './components/Contact/ContactSection';
 import { Footer } from './components/Footer/Footer';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton/FloatingWhatsAppButton';
 
 const App: React.FC = () => {
   return (
@@ -25,6 +26,7 @@ const App: React.FC = () => {
         <GlobalRepresentationSection />
         <ContactSection />
       </main>
+      <FloatingWhatsAppButton />
       <Footer />
     </>
   );

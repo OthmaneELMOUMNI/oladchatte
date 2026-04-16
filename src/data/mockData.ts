@@ -193,7 +193,7 @@ export const siteData = {
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDSx-PnOWnzsnYct91E4e1E0mYyFUpt4toQAXasoQhoVUK8-3F7FTFyLbcZuvvMtrraq0GoutLrHrKMl2DTT8wwU5OE4MFWMl-slR1ozbYzXvr8TtPZAtYx-4w7t9x_h8beLkHGMpyt4hwpUJw73_auprI1gXOy2EWlOmY3WfCK4SWxv-2-kqqHXUXcJtFmgTmAAa7jSzZLyeiVe8-3zoK32qlCs5w854oRZJchktI3aYxRgHreRmYODCxYHIFbhQSwkAfXWZ-FHdCD',
     subtitle: 'Special Star',
     title: 'Managed with Care and Respect',
-    description: 'Managed with care and respect by Samira under Special Star.',
+    description: 'Managed with care and respect under Special Star.',
     features: [] as Array<{
       title: string;
       description: string;
@@ -201,9 +201,9 @@ export const siteData = {
   },
   inquiries: {
     subtitle: 'Inquiries',
-    title: 'Contact Samira',
+    title: 'Contact',
     description:
-      'For performances, cultural invitations, media requests, and collaborations, reach out to Samira under Special Star using the form or email below.',
+      'For performances, cultural invitations, media requests, and collaborations, reach out through Special Star using the form or email below.',
     contactMethods: [
       {
         label: 'Tel (Morocco)',

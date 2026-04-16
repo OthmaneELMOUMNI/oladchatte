@@ -52,7 +52,7 @@ export const ContactSection: React.FC = () => {
     if (!emailIsValid) {
       setStatus({
         type: 'error',
-        message: 'Please enter a valid email address so Samira can reply.',
+        message: 'Please enter a valid email address so we can reply.',
       });
       return;
     }
