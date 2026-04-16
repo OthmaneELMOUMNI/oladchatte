@@ -91,7 +91,8 @@
   position: relative;
   overflow: hidden;
   border-radius: var(--radius-xl);
-  height: clamp(350px, 45vw, 450px);
+  aspect-ratio: 4 / 5;
+  min-height: 320px;
   margin-bottom: 1.5rem;
 }
 
@@ -99,6 +100,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   filter: grayscale(100%);
   transition: all 0.7s ease;
 }
