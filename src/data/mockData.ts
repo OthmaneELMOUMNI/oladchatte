@@ -4,7 +4,6 @@ import mamoImage from '../assets/mamo.png';
 import mjidImage from '../assets/mjid.jpeg';
 import mostaphaImage from '../assets/MOSTAPHA.png';
 import omarImage from '../assets/omar.png';
-import popoImage from '../assets/popo.png';
 
 type SectionLink = {
   name: string;
@@ -85,6 +84,7 @@ type SiteData = {
   footer: {
     brand: string;
     links: SectionLink[];
+    management: string;
     copyright: string;
   };
 };
@@ -170,12 +170,6 @@ export const siteData = {
         fallbackLabel: 'Al-Habib',
       },
       {
-        name: 'Mohamed Qadir',
-        role: 'Guitarist weaving Hassani and Sahrawi improvisation',
-        image: popoImage,
-        fallbackLabel: 'Mohamed Qadir',
-      },
-      {
         name: 'Hajj Muhammad Outanin',
         role: 'Guitarist bridging desert roots and the world',
         image: hajjImage,
@@ -243,6 +237,7 @@ export const siteData = {
       { name: 'Representation', href: '#representation' },
       { name: 'Contact', href: '#contact' },
     ],
-    copyright: 'Copyright Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
+    management: 'Managed with care and respect by Samira under Special Star.',
+    copyright: '© Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
   },
 } satisfies SiteData;

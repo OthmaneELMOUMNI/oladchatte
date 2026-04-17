@@ -15,6 +15,7 @@ export const Footer: React.FC = () => {
           </a>
         ))}
       </div>
+      <div className={styles.management}>{siteData.footer.management}</div>
       <div className={styles.copyright}>{siteData.footer.copyright}</div>
     </footer>
   );
