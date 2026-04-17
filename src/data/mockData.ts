@@ -1,5 +1,9 @@
 import heroHome from '../assets/hero-home-stage.png';
-import heroHomeMobile from '../assets/hero-home-mobile.png';
+import hajjImage from '../assets/lhaj.png';
+import mamoImage from '../assets/mamo.png';
+import mjidImage from '../assets/mjid.jpeg';
+import mostaphaImage from '../assets/MOSTAPHA.png';
+import omarImage from '../assets/omar.png';
 
 type SectionLink = {
   name: string;
@@ -80,6 +84,7 @@ type SiteData = {
   footer: {
     brand: string;
     links: SectionLink[];
+    management: string;
     copyright: string;
   };
 };
@@ -113,7 +118,7 @@ export const siteData = {
       href: '#ensemble',
     },
     bgImage: heroHome,
-    bgImageMobile: heroHomeMobile,
+    bgImageMobile: heroHome,
   },
   ancestry: {
     subtitle: 'The Lineage',
@@ -143,43 +148,31 @@ export const siteData = {
       {
         name: 'El-Moumni Omar (Chatta)',
         role: 'Founder, desert poet, and voice of memory',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuB_NGSTlaiaxTMnJmvOpkJxqUJb0pP1-EiAg8Vi4AlMlvGt4W2I3v4eAsCxX2GY-x_IYY7-IUeS5FEJykRhNekxB5aXICK7i4fIdy8g-yBMrzZsZSGicBUVFGaoJvfeCJ0mQDejJwhbbr8_W2QS1x-6c9R_8WOyNmSPKzD2T-k-0x4MvGCemrsMYQCPZKW0jnJdrjo-QFVqypEoxja9p-CMpDI4AN8DlX02NxPB3cIcne1AtvkKbrD1yK8K1RBrSGRbohwqLHBacrza',
+        image: omarImage,
         fallbackLabel: 'Omar',
       },
       {
         name: 'El-Moumni Mustapha (Chatta)',
         role: 'Master of the guembri and heartbeat of rhythm',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuChxUUr1bCzcLH-wqibyQtBTf-KoiFSahhmk3HUx3Lec5HG8CXaoG575-BRgOEB8SRHw-i6rTYEJGas5KI96RP3X6elCHiFJxYKkvpM_ZLLUq4XY3aR4RXSVcUGy9lbT9sLmTZNd9_COqbJV2hjZt7Ienqgn-jfdQvRintFH7zZVpSGFR7fxApuc08ldjNWKOQsuAPexlHUFkJZT0ShGHWAi6y4YCQxGu3pr5hdBgePXMZ-NY5g16-Wn4N5MvQpBbz5P8-A9hlAeWgP',
+        image: mostaphaImage,
         fallbackLabel: 'Mustapha',
       },
       {
         name: 'El-Moumni Abdul Majid (Chatta)',
         role: 'A rare desert voice shaped by wind and sand',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuB-dVXuZ35SwV6MbdPYCnKBbMQ3kY3IZ8eKiZx-u-KAYf2FVQTg4J-17EyNkFiaObjAJWLaPZQRRCoteytBt_ckwmKIgcS7MxJtpOEOFCYAgqnQS9GEfUFwDuN5rvlIy3wCY9GNDkFYTbaQovwwVOV8UTKHvxDokp3VLZTsUb0GmFmDunrcuaVPbDZgParYwPPz-IlkjxeEmimGuBauq3QxHPcPm7E7-4hEaYflvd-tQj3qKg9DRAErQD2Wj5vYYQ41rKyAnXEWQDQh',
+        image: mjidImage,
         fallbackLabel: 'Abdul Majid',
       },
       {
         name: 'Al-Makhshuni Al-Habib',
         role: 'Guardian of the guedra, played seated as desert tradition demands',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuAYe_0kalDjOnlt-OcVDVFGCQI2_zB8joNoUFIKoMPYvQBhYKeg75IPY2BN_ZmYgt1Wzez2rxob4nvptLx-5jKMUNoPsAqmRUCwAKfw2my4LAZqe2zDsFQ_QVQLqfbcb5sJ_CDj6Z8gwqMJ_ZL1TCAH6yXG4q1jfQLRXKcUT3kverFjMNCGQQXr5vR25RPxhV24VmwzZtSH17OGygqmKEZQIawtBOYZ0RyU94gTMeturSf9px4ibRltnEb1yHghzBZBbjnbe-ZG4m7a',
+        image: mamoImage,
         fallbackLabel: 'Al-Habib',
-      },
-      {
-        name: 'Mohamed Qadir',
-        role: 'Guitarist weaving Hassani and Sahrawi improvisation',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuCnbTJMlqFWnrO4qlyS3-isL5PzOFwIn5QKq10hBd3wat992Bfh4tqqMeohZl2p-z7Yf8nl2Ezg1YGG94OTal5C90loDzKBHOuNncrduycrrP9c7DWtdERHORQWlWdpYFNmTAQRxb3avDIFhPaiRrYJNmjD5DYdtIwB8bNAIKuheF8UGyiYuBbE3vqzPk0gHFUFZO49T2jp9MZbYMr6Il67n3sAwtQ5p-9yXQtNNN18fSCWh4Jn9KtGYw1Fk5-75EGxTNgVggyS26Hs',
-        fallbackLabel: 'Mohamed Qadir',
       },
       {
         name: 'Hajj Muhammad Outanin',
         role: 'Guitarist bridging desert roots and the world',
-        image:
-          'https://lh3.googleusercontent.com/aida-public/AB6AXuD0aDLNWuKm4h3rsz30AfdY1Oi8-ynnae4m8X3QQvP5_6EaTgC_vYgN7FnBoOOu71tgb-oUw202GgS08CleHKVLv4x44aFadj3SnGaPwWE3oTVJnBkj59B6brrKTROpS98-PnyQ-7kzky2PGpYUzBSS351JNrRyXOG959QETF2lFCcbzi5xmgo7c6cD_l-RuQMD-FeklHDhvVCFhPKe1Udmv-XYxF3F_jQ2FVirpZ1RFuNDCY-Z70RZDJv1jxk4xpBSme27DL29BNLC',
+        image: hajjImage,
         fallbackLabel: 'Hajj Muhammad',
       },
     ],
@@ -244,6 +237,7 @@ export const siteData = {
       { name: 'Representation', href: '#representation' },
       { name: 'Contact', href: '#contact' },
     ],
-    copyright: 'Copyright Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
+    management: 'Managed with care and respect by Samira under Special Star.',
+    copyright: '© Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
   },
 } satisfies SiteData;
