@@ -1,47 +1,143 @@
-.quoteSection {
-  padding-top: clamp(6rem, 15vw, 12rem);
-  padding-bottom: clamp(6rem, 15vw, 12rem);
-  background-color: var(--color-surface);
+.section {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  background-color: var(--color-surface-container-low);
+  padding-left: var(--spacing-padding-h);
+  padding-right: var(--spacing-padding-h);
+  overflow: hidden;
+}
+
+.inner {
+  position: relative;
+  max-width: 44rem;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-align: center;
-  padding-left: var(--spacing-padding-h);
-  padding-right: var(--spacing-padding-h);
+  gap: clamp(2rem, 4vw, 3rem);
 }
 
-.icon {
+/* ── Large decorative opening mark ── */
+
+.bigMark {
+  position: absolute;
+  top: -1.5rem;
+  left: -1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(8rem, 20vw, 14rem);
+  line-height: 1;
   color: var(--color-primary);
-  font-size: clamp(2rem, 5vw, 3rem) !important;
-  margin-bottom: clamp(1.5rem, 4vw, 3rem);
-  font-variation-settings: 'FILL' 1;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  font-style: normal;
 }
 
-.text {
-  font-size: clamp(1.85rem, 4.5vw, 3.25rem);
+/* ── Blockquote reset ── */
+
+.blockquote {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+  width: 100%;
+}
+
+/* ── Verse lines (setup) ── */
+
+.verses {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.verseLine {
   font-family: var(--font-serif);
   font-style: italic;
-  max-width: 50rem;
-  line-height: 1.5;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  color: var(--color-on-surface-variant);
+  line-height: 1.7;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── Thin centre separator ── */
+
+.separator {
+  width: clamp(2.5rem, 6vw, 4rem);
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(233, 193, 118, 0.5),
+    transparent
+  );
+}
+
+/* ── Bridge lines (build-up) ── */
+
+.bridge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.bridgeLine {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.2rem, 2.8vw, 1.5rem);
+  color: var(--color-on-surface);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* ── Climax line (payoff) ── */
+
+.climax {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  line-height: 1.15;
   margin: 0;
   word-wrap: break-word;
-  white-space: pre-line;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 55%,
+    var(--color-tertiary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 32px rgba(233, 193, 118, 0.18));
 }
 
-.divider {
-  margin-top: clamp(1.5rem, 4vw, 3rem);
+/* ── Attribution ── */
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.attributionLine {
+  display: block;
+  width: clamp(3rem, 8vw, 5rem);
   height: 1px;
-  width: clamp(4rem, 10vw, 6rem);
-  background-color: rgba(78, 70, 57, 0.3);
+  background-color: rgba(233, 193, 118, 0.35);
 }
 
-.subtitle {
-  margin-top: clamp(1rem, 3vw, 1.5rem);
-  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+.attributionText {
+  font-family: var(--font-sans);
+  font-size: clamp(0.65rem, 1.4vw, 0.75rem);
+  font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--color-on-surface-variant);
-  font-family: var(--font-sans);
-  margin-bottom: 0;
+  margin: 0;
 }

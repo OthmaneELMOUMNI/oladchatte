@@ -1,0 +1,221 @@
+.section {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  background:
+    radial-gradient(circle at top left, rgba(233, 193, 118, 0.08), transparent 32%),
+    linear-gradient(180deg, var(--color-surface-container-low), var(--color-surface));
+}
+
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2.5rem, 6vw, 4rem);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    grid-template-columns: 5fr 7fr;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.subtitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 5vw, 3.65rem);
+  font-style: italic;
+  line-height: 1.08;
+}
+
+.description {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--color-on-surface-variant);
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.65;
+}
+
+.quoteBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.quoteLine {
+  width: clamp(4rem, 10vw, 7rem);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(233, 193, 118, 0.9), rgba(233, 193, 118, 0));
+}
+
+.quote {
+  margin: 0;
+  max-width: 30rem;
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--color-primary);
+}
+
+.mediaColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: clamp(1rem, 2vw, 1.5rem);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(233, 193, 118, 0.18), transparent 34%),
+    linear-gradient(145deg, rgba(90, 69, 34, 0.85), rgba(19, 19, 19, 0.98));
+  outline: 1px solid rgba(233, 193, 118, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+}
+
+.posterButton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.posterVideo,
+.activeVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.posterVideo {
+  filter: grayscale(35%);
+  transition:
+    transform 0.7s ease,
+    filter 0.7s ease;
+}
+
+.posterShade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(19, 19, 19, 0.1) 0%, rgba(19, 19, 19, 0.76) 100%),
+    radial-gradient(circle at bottom left, rgba(233, 193, 118, 0.22), transparent 42%);
+}
+
+.posterBadge {
+  position: absolute;
+  left: clamp(1rem, 2vw, 1.5rem);
+  right: clamp(1rem, 2vw, 1.5rem);
+  bottom: clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.playButton {
+  width: clamp(3.6rem, 5vw, 4.6rem);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background-color: rgba(233, 193, 118, 0.94);
+  color: var(--color-on-primary);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+  transition: transform 0.35s ease;
+}
+
+.playTriangle {
+  width: 0;
+  height: 0;
+  margin-left: 0.15rem;
+  border-top: 0.42rem solid transparent;
+  border-bottom: 0.42rem solid transparent;
+  border-left: 0.74rem solid currentColor;
+}
+
+.posterText {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.posterLabel {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(229, 226, 225, 0.76);
+}
+
+.posterTitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--color-on-surface);
+}
+
+@media (hover: hover) {
+  .posterButton:hover .posterVideo {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+  }
+
+  .posterButton:hover .playButton {
+    transform: translateY(-2px);
+  }
+}
+
+.posterButton:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+.activeVideo {
+  background-color: #000;
+}
+
+.note {
+  margin: 0;
+  max-width: 36rem;
+  color: rgba(229, 226, 225, 0.7);
+  font-size: clamp(0.92rem, 1.7vw, 1rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 767px) {
+  .videoFrame {
+    aspect-ratio: 16 / 11;
+  }
+}
