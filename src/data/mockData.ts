@@ -83,6 +83,7 @@ type SiteData = {
   };
   footer: {
     brand: string;
+    instagram: string;
     links: SectionLink[];
     management: string;
     copyright: string;
@@ -232,6 +233,7 @@ export const siteData = {
   },
   footer: {
     brand: 'Oulad Chatta Group',
+    instagram: 'https://www.instagram.com/specialstar.worldmusic?igsh=MTRnOGRzbmNtazk5cw==',
     links: [
       { name: 'Top', href: '#top' },
       { name: 'Representation', href: '#representation' },

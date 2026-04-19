@@ -158,3 +158,72 @@
   width: 100%;
   max-width: 300px;
 }
+
+/* Instagram — shared icon size */
+.instagramIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+  display: block;
+}
+
+/* Desktop nav: small icon in actions row */
+.instagramLink {
+  display: none;
+  align-items: center;
+  color: #737373;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .instagramLink {
+    display: flex;
+  }
+}
+
+.instagramLink:hover {
+  color: #facc15;
+  transform: translateY(-1px);
+}
+
+/* WhatsApp — same size/position as Instagram in desktop nav */
+.whatsappLink {
+  display: none;
+  align-items: center;
+  color: #737373;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+@media (min-width: 1024px) {
+  .whatsappLink {
+    display: flex;
+  }
+}
+
+.whatsappLink:hover {
+  color: #25d366;
+  transform: translateY(-1px);
+}
+
+/* Mobile overlay: icon-only row */
+.mobileSocial {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.mobileSocialLink {
+  display: flex;
+  align-items: center;
+  color: #737373;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.mobileSocialLink:first-child:hover {
+  color: #facc15;
+  transform: translateY(-1px);
+}
+
+.mobileSocialLink:last-child:hover {
+  color: #25d366;
+  transform: translateY(-1px);
+}

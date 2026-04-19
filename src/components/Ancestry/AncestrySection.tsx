@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { siteData } from '../../data/mockData';
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback';
 import styles from './AncestrySection.module.css';
 
+const PREVIEW_COUNT = 2;
+
 export const AncestrySection: React.FC = () => {
   const { ancestry } = siteData;
+  const [expanded, setExpanded] = useState(false);
+
+  const visibleParagraphs = expanded
+    ? ancestry.paragraphs
+    : ancestry.paragraphs.slice(0, PREVIEW_COUNT);
+
+  const hasMore = ancestry.paragraphs.length > PREVIEW_COUNT;
 
   return (
     <section id="heritage" className={`container ${styles.ancestry}`} aria-labelledby="heritage-title">
@@ -22,10 +31,23 @@ export const AncestrySection: React.FC = () => {
             </h2>
           </div>
 
-          <div className={styles.paragraphs}>
-            {ancestry.paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className={styles.paragraphsWrap}>
+            <div className={`${styles.paragraphs} ${!expanded ? styles.paragraphsFaded : ''}`}>
+              {visibleParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+
+            {hasMore && (
+              <button
+                type="button"
+                className={styles.readMoreBtn}
+                onClick={() => setExpanded((v) => !v)}
+                aria-expanded={expanded}
+              >
+                {expanded ? 'Read less' : 'Read more\u2009\u2026'}
+              </button>
+            )}
           </div>
 
           <div className={styles.quoteBlock}>
