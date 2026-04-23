@@ -8,24 +8,23 @@ const PREVIEW_COUNT = 2;
 export const AncestrySection: React.FC = () => {
   const { ancestry } = siteData;
   const [expanded, setExpanded] = useState(false);
-
   const visibleParagraphs = expanded
     ? ancestry.paragraphs
     : ancestry.paragraphs.slice(0, PREVIEW_COUNT);
-
   const hasMore = ancestry.paragraphs.length > PREVIEW_COUNT;
+  const titleLines = ancestry.title.split('\n');
 
   return (
     <section id="heritage" className={`container ${styles.ancestry}`} aria-labelledby="heritage-title">
       <div className={styles.grid}>
         <div className={styles.textContent}>
           <div className={styles.header}>
-            <p className={styles.subtitle}>{ancestry.subtitle}</p>
+            {ancestry.subtitle ? <p className={styles.subtitle}>{ancestry.subtitle}</p> : null}
             <h2 id="heritage-title" className={styles.title}>
-              {ancestry.title.split('\n').map((line, index) => (
+              {titleLines.map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
-                  {index === 0 && <br />}
+                  {index < titleLines.length - 1 ? <br /> : null}
                 </React.Fragment>
               ))}
             </h2>
@@ -50,10 +49,12 @@ export const AncestrySection: React.FC = () => {
             )}
           </div>
 
-          <div className={styles.quoteBlock}>
-            <div className={styles.divider}></div>
-            <p className={styles.quote}>{ancestry.quote}</p>
-          </div>
+          {ancestry.quote ? (
+            <div className={styles.quoteBlock}>
+              <div className={styles.divider}></div>
+              <p className={styles.quote}>{ancestry.quote}</p>
+            </div>
+          ) : null}
         </div>
 
         <div className={styles.imageGrid}>

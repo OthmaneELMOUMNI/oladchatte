@@ -17,59 +17,61 @@ const initialFormState: InquiryFormState = {
   message: '',
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const ContactSection: React.FC = () => {
   const { inquiries: data } = siteData;
   const [formData, setFormData] = useState<InquiryFormState>(initialFormState);
-  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [error, setError] = useState('');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
-
+    if (error) setError('');
     setFormData((current) => ({
       ...current,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-
+  const buildMailtoHref = () => {
     const name = formData.name.trim();
     const organization = formData.organization.trim();
     const email = formData.email.trim();
     const message = formData.message.trim();
 
-    if (!name || !organization || !email || !message) {
-      setStatus({
-        type: 'error',
-        message: 'Please complete every field before sending your inquiry.',
-      });
-      return;
-    }
-
-    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    if (!emailIsValid) {
-      setStatus({
-        type: 'error',
-        message: 'Please enter a valid email address so we can reply.',
-      });
-      return;
-    }
-
-    const subject = `Booking inquiry from ${name}`;
+    const subject = name ? `Booking inquiry from ${name}` : 'Booking inquiry';
     const body = [
-      `Name: ${name}`,
-      `Organization / Ministry: ${organization}`,
-      `Email: ${email}`,
-      '',
-      'Message / Inquiry Details:',
-      message,
-    ].join('\n');
+      name ? `Name: ${name}` : '',
+      organization ? `Organization / Ministry: ${organization}` : '',
+      email ? `Email: ${email}` : '',
+      message ? '\nMessage / Inquiry Details:\n' + message : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
 
-    window.location.href = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus({ type: 'success', message: data.successMessage });
-    setFormData(initialFormState);
+    return `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
+  const handleSubmit = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    if (!name) {
+      event.preventDefault();
+      setError('Please enter your full name.');
+      return;
+    }
+    if (!email || !EMAIL_RE.test(email)) {
+      event.preventDefault();
+      setError('Please enter a valid email address.');
+      return;
+    }
+    if (!message) {
+      event.preventDefault();
+      setError('Please enter your message or inquiry details.');
+      return;
+    }
   };
 
   return (
@@ -105,20 +107,20 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <div id="booking" className={styles.formContainer}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-name">
-              Full Name
+              Full Name <span aria-hidden="true">*</span>
             </label>
             <input
               id="contact-name"
               name="name"
               type="text"
               autoComplete="name"
+              required
               className={styles.input}
               value={formData.name}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -134,57 +136,53 @@ export const ContactSection: React.FC = () => {
               className={styles.input}
               value={formData.organization}
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-email">
-              Email Address
+              Email Address <span aria-hidden="true">*</span>
             </label>
             <input
               id="contact-email"
               name="email"
               type="email"
               autoComplete="email"
+              required
               className={styles.input}
               value={formData.email}
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-message">
-              Message / Inquiry Details
+              Message / Inquiry Details <span aria-hidden="true">*</span>
             </label>
             <textarea
               id="contact-message"
               name="message"
+              required
               className={styles.textarea}
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              required
             ></textarea>
           </div>
 
-          {status ? (
-            <p
-              className={`${styles.status} ${status.type === 'success' ? styles.statusSuccess : styles.statusError}`}
-              role="status"
-              aria-live="polite"
-            >
-              {status.message}
+          {error && (
+            <p role="alert" className={`${styles.status} ${styles.statusError}`}>
+              {error}
             </p>
-          ) : null}
+          )}
 
           <div className={styles.submitWrapper}>
-            <Button type="submit" variant="primary" fullWidth className={styles.submitBtn}>
+            <Button href={buildMailtoHref()} variant="primary" fullWidth className={styles.submitBtn} onClick={handleSubmit}>
               {data.submitLabel}
             </Button>
+            <p className={styles.submitHint}>This will open your email app with the details pre-filled.</p>
           </div>
-        </form>
+        </div>
       </div>
     </section>
   );
