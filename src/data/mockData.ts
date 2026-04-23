@@ -42,6 +42,9 @@ type SiteData = {
     subtitle: string;
     title: string;
     paragraphs: string[];
+    availabilityTitle: string;
+    availabilityItems: string[];
+    availabilityNote: string;
     quote: string;
     image1: string;
     image2: string;
@@ -106,13 +109,13 @@ export const siteData = {
     },
   },
   hero: {
-    subtitle: 'Hassani Heritage',
-    titlePrimary: 'Oulad Chatta Group',
-    titleSecondary: 'A Living Voice of the Desert',
+    subtitle: '',
+    titlePrimary: 'Oulad Chatta',
+    titleSecondary: 'Sahrawi Hassani Poetry & Music Ensemble',
     description:
-      "Formally founded in 1990 by Omar El Moumni (Chatta), Oulad Chatta was born from love and loyalty - a family's promise to keep their grandmother's desert music and poetry alive, breathing, and heard by the world.",
+      'Preserving Sahrawi Hassani Poetry and Music Heritage',
     ctaPrimary: {
-      label: 'Book a Performance',
+      label: 'Book the Group',
       href: '#contact',
     },
     ctaSecondary: {
@@ -129,14 +132,16 @@ export const siteData = {
       'Oulad Chatta represents a living tradition of Sahrawi Hassani poetry and music, rooted in the cultural identity of the Moroccan desert. Their art form is passed down through generations, preserving oral storytelling, rhythm, and collective memory.',
       'Through traditional instruments such as the tidinit and tbal, the group expresses themes of desert life, history, migration, and social identity. Each performance is not only music, but a cultural transmission of heritage and knowledge.',
       'Oulad Chatta plays an important role in safeguarding intangible cultural heritage, ensuring that the voice, poetry, and traditions of the Sahrawi people continue to live and evolve for future generations.',
-      'Oulad Chatta is available for:',
-      '- International festivals',
-      '- Cultural institutions',
-      '- Theatre performances',
-      '- Heritage and UNESCO programmes',
-      '- Touring productions',
-      'For booking enquiries, please contact our management team.',
     ],
+    availabilityTitle: 'Oulad Chatta is available for',
+    availabilityItems: [
+      'International festivals',
+      'Cultural institutions',
+      'Theatre performances',
+      'Heritage and UNESCO programmes',
+      'Touring productions',
+    ],
+    availabilityNote: 'For booking enquiries, please contact our management team.',
     quote: '',
     image1:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAv__7cwNmVSMqr1wIqQiRFor8GybTJDufKNYuyjMHBh0a5F-QKT99tnz2qDqQ_XzLCWFMZ2gl1L2PwO09fUYBtLGTfS12usDdB3j9Nrf7mTJLWi4wcIsfdXzKDSM8EDj3pUXDcjuGzRpOO8-_YgjvW70Eqr3pZQmzIKv5CKMtpBu2B2cUgDvM5kpUahowSDlpTq4lVnuX5PKlhZ2FEBhUaavx06Bux-eBGMuHRmrYcW3M38-mEijElfD7MfHMcP1QlGv9TShkQjJKU',
@@ -232,7 +237,7 @@ export const siteData = {
     emailDisplay: 'info@specialstarsarl.com',
     submitLabel: 'Send Inquiry',
     successMessage:
-      'Your email app should open with a pre-filled message to info@specialstarsarl.com. If it does not, send your request directly to info@specialstarsarl.com.',
+      'Your inquiry should be sent directly to info@specialstarsarl.com.',
   },
   footer: {
     brand: 'Oulad Chatta Group',

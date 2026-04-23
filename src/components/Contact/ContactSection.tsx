@@ -21,56 +21,78 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const ContactSection: React.FC = () => {
   const { inquiries: data } = siteData;
+  const formSubmitEndpoint = `https://formsubmit.co/ajax/${encodeURIComponent(data.email)}`;
   const [formData, setFormData] = useState<InquiryFormState>(initialFormState);
-  const [error, setError] = useState('');
+  const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
-    if (error) setError('');
+    if (status) setStatus(null);
     setFormData((current) => ({
       ...current,
       [name]: value,
     }));
   };
 
-  const buildMailtoHref = () => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
     const name = formData.name.trim();
     const organization = formData.organization.trim();
     const email = formData.email.trim();
     const message = formData.message.trim();
 
-    const subject = name ? `Booking inquiry from ${name}` : 'Booking inquiry';
-    const body = [
-      name ? `Name: ${name}` : '',
-      organization ? `Organization / Ministry: ${organization}` : '',
-      email ? `Email: ${email}` : '',
-      message ? '\nMessage / Inquiry Details:\n' + message : '',
-    ]
-      .filter(Boolean)
-      .join('\n');
-
-    return `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
-  const handleSubmit = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    const name = formData.name.trim();
-    const email = formData.email.trim();
-    const message = formData.message.trim();
-
     if (!name) {
-      event.preventDefault();
-      setError('Please enter your full name.');
+      setStatus({ type: 'error', message: 'Please enter your full name.' });
       return;
     }
     if (!email || !EMAIL_RE.test(email)) {
-      event.preventDefault();
-      setError('Please enter a valid email address.');
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
       return;
     }
     if (!message) {
-      event.preventDefault();
-      setError('Please enter your message or inquiry details.');
+      setStatus({ type: 'error', message: 'Please enter your message or inquiry details.' });
       return;
+    }
+
+    setIsSubmitting(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch(formSubmitEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          organization,
+          email,
+          message,
+          _subject: `Booking inquiry from ${name}`,
+          _template: 'table',
+          _honey: '',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      setStatus({
+        type: 'success',
+        message: `Your inquiry was sent successfully to ${data.email}. If this is the first submission, please confirm the one-time activation email from FormSubmit in that inbox.`,
+      });
+      setFormData(initialFormState);
+    } catch {
+      setStatus({
+        type: 'error',
+        message: `We couldn't send your inquiry automatically. Please try again or email ${data.email} directly.`,
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -107,7 +129,7 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        <div id="booking" className={styles.formContainer}>
+        <form id="booking" className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-name">
               Full Name <span aria-hidden="true">*</span>
@@ -170,19 +192,28 @@ export const ContactSection: React.FC = () => {
             ></textarea>
           </div>
 
-          {error && (
-            <p role="alert" className={`${styles.status} ${styles.statusError}`}>
-              {error}
+          {status && (
+            <p
+              role={status.type === 'error' ? 'alert' : 'status'}
+              className={`${styles.status} ${status.type === 'success' ? styles.statusSuccess : styles.statusError}`}
+            >
+              {status.message}
             </p>
           )}
 
           <div className={styles.submitWrapper}>
-            <Button href={buildMailtoHref()} variant="primary" fullWidth className={styles.submitBtn} onClick={handleSubmit}>
-              {data.submitLabel}
+            <Button type="submit" variant="primary" fullWidth className={styles.submitBtn} disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : data.submitLabel}
             </Button>
-            <p className={styles.submitHint}>This will open your email app with the details pre-filled.</p>
+            <p className={styles.submitHint}>
+              Your inquiry will be sent directly to{' '}
+              <a className={styles.submitHintLink} href={`mailto:${data.email}`}>
+                {data.email}
+              </a>
+              .
+            </p>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );
