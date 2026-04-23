@@ -21,7 +21,7 @@ export const Hero: React.FC = () => {
       </div>
 
       <div className={styles.content}>
-        <span className={styles.subtitle}>{siteData.hero.subtitle}</span>
+        {siteData.hero.subtitle ? <span className={styles.subtitle}>{siteData.hero.subtitle}</span> : null}
 
         <h1 id="hero-title" className={styles.title}>
           {siteData.hero.titlePrimary} <br />
@@ -37,13 +37,6 @@ export const Hero: React.FC = () => {
             className={styles.heroButton}
           >
             {siteData.hero.ctaPrimary.label}
-          </Button>
-          <Button
-            variant="secondary"
-            href={siteData.hero.ctaSecondary.href}
-            className={`${styles.heroButton} ${styles.heroButtonSecondary}`}
-          >
-            {siteData.hero.ctaSecondary.label}
           </Button>
         </div>
       </div>

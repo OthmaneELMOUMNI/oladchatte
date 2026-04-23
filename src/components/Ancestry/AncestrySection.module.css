@@ -115,6 +115,55 @@
 
 /* ── Quote ── */
 
+.availabilityCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.availabilityTitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.7vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  font-weight: 500;
+}
+
+.availabilityGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.availabilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.6vw, 1rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.availabilityDot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  margin-top: 0.52rem;
+  background: var(--color-primary);
+}
+
+.availabilityNote {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.5vw, 1rem);
+  line-height: 1.65;
+}
+
 .quoteBlock {
   padding-top: clamp(0.5rem, 2vw, 1rem);
 }

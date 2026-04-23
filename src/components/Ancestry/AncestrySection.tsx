@@ -3,7 +3,7 @@ import { siteData } from '../../data/mockData';
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback';
 import styles from './AncestrySection.module.css';
 
-const PREVIEW_COUNT = 2;
+const PREVIEW_COUNT = 3;
 
 export const AncestrySection: React.FC = () => {
   const { ancestry } = siteData;
@@ -31,7 +31,7 @@ export const AncestrySection: React.FC = () => {
           </div>
 
           <div className={styles.paragraphsWrap}>
-            <div className={`${styles.paragraphs} ${!expanded ? styles.paragraphsFaded : ''}`}>
+            <div className={`${styles.paragraphs} ${hasMore && !expanded ? styles.paragraphsFaded : ''}`}>
               {visibleParagraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
@@ -47,6 +47,19 @@ export const AncestrySection: React.FC = () => {
                 {expanded ? 'Read less' : 'Read more\u2009\u2026'}
               </button>
             )}
+          </div>
+
+          <div className={styles.availabilityCard}>
+            <p className={styles.availabilityTitle}>{ancestry.availabilityTitle}</p>
+            <div className={styles.availabilityGrid}>
+              {ancestry.availabilityItems.map((item) => (
+                <div key={item} className={styles.availabilityItem}>
+                  <span className={styles.availabilityDot} aria-hidden="true" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className={styles.availabilityNote}>{ancestry.availabilityNote}</p>
           </div>
 
           {ancestry.quote ? (
