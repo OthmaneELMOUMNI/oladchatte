@@ -14,8 +14,8 @@ export const GallerySection: React.FC = () => {
           <h2 id="ensemble-title" className={styles.title}>
             {ensemble.title}
           </h2>
+          <p className={styles.description}>{ensemble.description}</p>
         </div>
-        <p className={styles.description}>{ensemble.description}</p>
       </div>
 
       <div className={styles.grid}>

@@ -1,0 +1,148 @@
+.shell {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.5rem);
+  bottom: clamp(1rem, 3vw, 1.5rem);
+  z-index: 140;
+  animation: drift 6s ease-in-out infinite;
+}
+
+.panel {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.1rem;
+  height: 4.1rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(233, 193, 118, 0.18);
+  background:
+    radial-gradient(circle at top left, rgba(44, 178, 90, 0.15), transparent 32%),
+    linear-gradient(135deg, rgba(14, 14, 14, 0.94), rgba(33, 32, 31, 0.96));
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 0 24px rgba(18, 130, 63, 0.12);
+  backdrop-filter: blur(18px);
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 12%,
+    rgba(233, 193, 118, 0.07) 42%,
+    transparent 68%
+  );
+  transform: translateX(-120%);
+  transition: transform 460ms ease;
+  pointer-events: none;
+}
+
+.panel:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(233, 193, 118, 0.34);
+  box-shadow:
+    0 20px 38px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 0 28px rgba(18, 130, 63, 0.18);
+}
+
+.panel:hover::before {
+  transform: translateX(120%);
+}
+
+.brandMark {
+  position: relative;
+  width: 2.88rem;
+  height: 2.88rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.24), transparent 30%),
+    linear-gradient(145deg, #1ba04d, #0f6f35);
+  box-shadow:
+    0 10px 20px rgba(18, 130, 63, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  flex-shrink: 0;
+}
+
+.iconHalo {
+  position: absolute;
+  inset: -0.34rem;
+  border-radius: 50%;
+  border: 1px solid rgba(56, 212, 111, 0.2);
+  animation: pulseRing 3.8s ease-out infinite;
+}
+
+.icon {
+  width: 1.36rem;
+  height: 1.36rem;
+  color: #f6fff8;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes pulseRing {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.88);
+  }
+  70% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.22);
+  }
+}
+
+@media (max-width: 640px) {
+  .shell {
+    right: 0.9rem;
+    bottom: 0.9rem;
+  }
+
+  .panel {
+    width: 3.8rem;
+    height: 3.8rem;
+  }
+
+  .brandMark {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell,
+  .iconHalo {
+    animation: none;
+  }
+
+  .panel,
+  .panel::before {
+    transition: none;
+  }
+}

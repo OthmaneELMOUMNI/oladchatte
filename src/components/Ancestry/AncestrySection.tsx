@@ -1,37 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { siteData } from '../../data/mockData';
 import { ImageWithFallback } from '../ImageWithFallback/ImageWithFallback';
 import styles from './AncestrySection.module.css';
 
+const PREVIEW_COUNT = 3;
+
 export const AncestrySection: React.FC = () => {
   const { ancestry } = siteData;
+  const [expanded, setExpanded] = useState(false);
+  const visibleParagraphs = expanded
+    ? ancestry.paragraphs
+    : ancestry.paragraphs.slice(0, PREVIEW_COUNT);
+  const hasMore = ancestry.paragraphs.length > PREVIEW_COUNT;
+  const titleLines = ancestry.title.split('\n');
 
   return (
     <section id="heritage" className={`container ${styles.ancestry}`} aria-labelledby="heritage-title">
       <div className={styles.grid}>
         <div className={styles.textContent}>
           <div className={styles.header}>
-            <p className={styles.subtitle}>{ancestry.subtitle}</p>
+            {ancestry.subtitle ? <p className={styles.subtitle}>{ancestry.subtitle}</p> : null}
             <h2 id="heritage-title" className={styles.title}>
-              {ancestry.title.split('\n').map((line, index) => (
+              {titleLines.map((line, index) => (
                 <React.Fragment key={index}>
                   {line}
-                  {index === 0 && <br />}
+                  {index < titleLines.length - 1 ? <br /> : null}
                 </React.Fragment>
               ))}
             </h2>
           </div>
 
-          <div className={styles.paragraphs}>
-            {ancestry.paragraphs.map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
+          <div className={styles.paragraphsWrap}>
+            <div className={`${styles.paragraphs} ${hasMore && !expanded ? styles.paragraphsFaded : ''}`}>
+              {visibleParagraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+
+            {hasMore && (
+              <button
+                type="button"
+                className={styles.readMoreBtn}
+                onClick={() => setExpanded((v) => !v)}
+                aria-expanded={expanded}
+              >
+                {expanded ? 'Read less' : 'Read more\u2009\u2026'}
+              </button>
+            )}
           </div>
 
-          <div className={styles.quoteBlock}>
-            <div className={styles.divider}></div>
-            <p className={styles.quote}>{ancestry.quote}</p>
+          <div className={styles.availabilityCard}>
+            <p className={styles.availabilityTitle}>{ancestry.availabilityTitle}</p>
+            <div className={styles.availabilityGrid}>
+              {ancestry.availabilityItems.map((item) => (
+                <div key={item} className={styles.availabilityItem}>
+                  <span className={styles.availabilityDot} aria-hidden="true" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <p className={styles.availabilityNote}>{ancestry.availabilityNote}</p>
           </div>
+
+          {ancestry.quote ? (
+            <div className={styles.quoteBlock}>
+              <div className={styles.divider}></div>
+              <p className={styles.quote}>{ancestry.quote}</p>
+            </div>
+          ) : null}
         </div>
 
         <div className={styles.imageGrid}>

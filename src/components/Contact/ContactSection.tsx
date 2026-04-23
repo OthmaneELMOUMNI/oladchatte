@@ -17,21 +17,25 @@ const initialFormState: InquiryFormState = {
   message: '',
 };
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export const ContactSection: React.FC = () => {
   const { inquiries: data } = siteData;
+  const formSubmitEndpoint = `https://formsubmit.co/ajax/${encodeURIComponent(data.email)}`;
   const [formData, setFormData] = useState<InquiryFormState>(initialFormState);
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
-
+    if (status) setStatus(null);
     setFormData((current) => ({
       ...current,
       [name]: value,
     }));
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const name = formData.name.trim();
@@ -39,37 +43,57 @@ export const ContactSection: React.FC = () => {
     const email = formData.email.trim();
     const message = formData.message.trim();
 
-    if (!name || !organization || !email || !message) {
-      setStatus({
-        type: 'error',
-        message: 'Please complete every field before sending your inquiry.',
-      });
+    if (!name) {
+      setStatus({ type: 'error', message: 'Please enter your full name.' });
+      return;
+    }
+    if (!email || !EMAIL_RE.test(email)) {
+      setStatus({ type: 'error', message: 'Please enter a valid email address.' });
+      return;
+    }
+    if (!message) {
+      setStatus({ type: 'error', message: 'Please enter your message or inquiry details.' });
       return;
     }
 
-    const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    setIsSubmitting(true);
+    setStatus(null);
 
-    if (!emailIsValid) {
+    try {
+      const response = await fetch(formSubmitEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name,
+          organization,
+          email,
+          message,
+          _subject: `Booking inquiry from ${name}`,
+          _template: 'table',
+          _honey: '',
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Request failed');
+      }
+
+      setStatus({
+        type: 'success',
+        message: `Your inquiry was sent successfully to ${data.email}. If this is the first submission, please confirm the one-time activation email from FormSubmit in that inbox.`,
+      });
+      setFormData(initialFormState);
+    } catch {
       setStatus({
         type: 'error',
-        message: 'Please enter a valid email address so Samira can reply.',
+        message: `We couldn't send your inquiry automatically. Please try again or email ${data.email} directly.`,
       });
-      return;
+    } finally {
+      setIsSubmitting(false);
     }
-
-    const subject = `Booking inquiry from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Organization / Ministry: ${organization}`,
-      `Email: ${email}`,
-      '',
-      'Message / Inquiry Details:',
-      message,
-    ].join('\n');
-
-    window.location.href = `mailto:${data.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setStatus({ type: 'success', message: data.successMessage });
-    setFormData(initialFormState);
   };
 
   return (
@@ -105,20 +129,20 @@ export const ContactSection: React.FC = () => {
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.formContainer}>
+        <form id="booking" className={styles.formContainer} onSubmit={handleSubmit}>
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-name">
-              Full Name
+              Full Name <span aria-hidden="true">*</span>
             </label>
             <input
               id="contact-name"
               name="name"
               type="text"
               autoComplete="name"
+              required
               className={styles.input}
               value={formData.name}
               onChange={handleChange}
-              required
             />
           </div>
 
@@ -134,55 +158,60 @@ export const ContactSection: React.FC = () => {
               className={styles.input}
               value={formData.organization}
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-email">
-              Email Address
+              Email Address <span aria-hidden="true">*</span>
             </label>
             <input
               id="contact-email"
               name="email"
               type="email"
               autoComplete="email"
+              required
               className={styles.input}
               value={formData.email}
               onChange={handleChange}
-              required
             />
           </div>
 
           <div className={styles.inputGroup}>
             <label className={styles.label} htmlFor="contact-message">
-              Message / Inquiry Details
+              Message / Inquiry Details <span aria-hidden="true">*</span>
             </label>
             <textarea
               id="contact-message"
               name="message"
+              required
               className={styles.textarea}
               rows={4}
               value={formData.message}
               onChange={handleChange}
-              required
             ></textarea>
           </div>
 
-          {status ? (
+          {status && (
             <p
+              role={status.type === 'error' ? 'alert' : 'status'}
               className={`${styles.status} ${status.type === 'success' ? styles.statusSuccess : styles.statusError}`}
-              role="status"
-              aria-live="polite"
             >
               {status.message}
             </p>
-          ) : null}
+          )}
 
           <div className={styles.submitWrapper}>
-            <Button type="submit" variant="primary" fullWidth className={styles.submitBtn}>
-              {data.submitLabel}
+            <Button type="submit" variant="primary" fullWidth className={styles.submitBtn} disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : data.submitLabel}
             </Button>
+            <p className={styles.submitHint}>
+              Your inquiry will be sent directly to{' '}
+              <a className={styles.submitHintLink} href={`mailto:${data.email}`}>
+                {data.email}
+              </a>
+              .
+            </p>
           </div>
         </form>
       </div>

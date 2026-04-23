@@ -40,12 +40,20 @@
 }
 
 .title {
-  font-size: clamp(2.5rem, 5vw, 3.75rem); /* Fluis scaled title */
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
   font-family: var(--font-serif);
   font-style: italic;
   line-height: 1.1;
   margin: 0;
   word-wrap: break-word;
+}
+
+/* ── Paragraphs collapse ── */
+
+.paragraphsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 }
 
 .paragraphs {
@@ -63,8 +71,101 @@
   margin: 0;
 }
 
+.paragraphsFaded {
+  position: relative;
+}
+
+.paragraphsFaded::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3.5rem;
+  background: linear-gradient(to bottom, transparent, var(--color-surface));
+  pointer-events: none;
+}
+
+.readMoreBtn {
+  align-self: flex-start;
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 1.5vw, 0.875rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(233, 193, 118, 0.4);
+}
+
+.readMoreBtn:hover {
+  opacity: 0.75;
+}
+
+.readMoreBtn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Quote ── */
+
+.availabilityCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.availabilityTitle {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.7vw, 1.08rem);
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  font-weight: 500;
+}
+
+.availabilityGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.availabilityItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.6vw, 1rem);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.availabilityDot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  margin-top: 0.52rem;
+  background: var(--color-primary);
+}
+
+.availabilityNote {
+  margin: 0;
+  color: var(--color-on-surface-variant);
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.5vw, 1rem);
+  line-height: 1.65;
+}
+
 .quoteBlock {
-  padding-top: clamp(1rem, 2vw, 1.5rem);
+  padding-top: clamp(0.5rem, 2vw, 1rem);
 }
 
 .divider {
@@ -82,21 +183,23 @@
   margin: 0;
 }
 
+/* ── Image grid ── */
+
 .imageGrid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: start;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 479px) {
   .imageGrid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr;
   }
 }
 
 .imageWrapper1 {
-  /* Only pad top on desktop to stagger */
+  /* stagger handled by padding-top on desktop */
 }
 
 @media (min-width: 1024px) {
@@ -105,23 +208,26 @@
   }
 }
 
-.image1, .image2 {
+.image1,
+.image2 {
   width: 100%;
   object-fit: cover;
   border-radius: var(--radius-xl);
 }
 
 .image1 {
-  height: clamp(300px, 40vw, 500px);
+  height: clamp(220px, 30vw, 420px);
   filter: grayscale(100%);
   transition: all 0.7s ease;
 }
 
-.image1:hover {
-  filter: grayscale(0%);
+@media (hover: hover) {
+  .image1:hover {
+    filter: grayscale(0%);
+  }
 }
 
 .image2 {
-  height: clamp(350px, 50vw, 600px);
+  height: clamp(260px, 36vw, 500px);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 }

@@ -4,10 +4,13 @@ import { Navigation } from './components/Navigation/Navigation';
 import { Hero } from './components/Hero/Hero';
 import { AncestrySection } from './components/Ancestry/AncestrySection';
 import { GallerySection } from './components/Gallery/GallerySection';
+import { VideoSection } from './components/VideoSection/VideoSection';
+import { PrivateGatheringSection } from './components/PrivateGathering/PrivateGatheringSection';
 import { QuoteSection } from './components/Quote/QuoteSection';
 import { GlobalRepresentationSection } from './components/GlobalRepresentation/GlobalRepresentationSection';
 import { ContactSection } from './components/Contact/ContactSection';
 import { Footer } from './components/Footer/Footer';
+import { FloatingWhatsAppButton } from './components/FloatingWhatsAppButton/FloatingWhatsAppButton';
 
 const App: React.FC = () => {
   return (
@@ -21,10 +24,13 @@ const App: React.FC = () => {
         <Hero />
         <AncestrySection />
         <GallerySection />
+        <VideoSection />
+        <PrivateGatheringSection />
         <QuoteSection />
         <GlobalRepresentationSection />
         <ContactSection />
       </main>
+      <FloatingWhatsAppButton />
       <Footer />
     </>
   );

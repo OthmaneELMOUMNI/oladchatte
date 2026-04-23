@@ -4,7 +4,6 @@ import mamoImage from '../assets/mamo.png';
 import mjidImage from '../assets/mjid.jpeg';
 import mostaphaImage from '../assets/MOSTAPHA.png';
 import omarImage from '../assets/omar.png';
-import popoImage from '../assets/popo.png';
 
 type SectionLink = {
   name: string;
@@ -43,6 +42,9 @@ type SiteData = {
     subtitle: string;
     title: string;
     paragraphs: string[];
+    availabilityTitle: string;
+    availabilityItems: string[];
+    availabilityNote: string;
     quote: string;
     image1: string;
     image2: string;
@@ -84,7 +86,9 @@ type SiteData = {
   };
   footer: {
     brand: string;
+    instagram: string;
     links: SectionLink[];
+    management: string;
     copyright: string;
   };
 };
@@ -93,24 +97,25 @@ export const siteData = {
   navigation: {
     brand: 'Oulad Chatta Group',
     links: [
+      { name: 'Home', href: '#top' },
+      { name: 'About', href: '#ensemble' },
       { name: 'Heritage', href: '#heritage' },
-      { name: 'Ensemble', href: '#ensemble' },
-      { name: 'Representation', href: '#representation' },
+      { name: 'Booking', href: '#booking' },
       { name: 'Contact', href: '#contact' },
     ],
     cta: {
       label: 'Book a Performance',
-      href: '#contact',
+      href: '#booking',
     },
   },
   hero: {
-    subtitle: 'Hassani Heritage',
-    titlePrimary: 'Oulad Chatta Group',
-    titleSecondary: 'A Living Voice of the Desert',
+    subtitle: '',
+    titlePrimary: 'Oulad Chatta',
+    titleSecondary: 'Sahrawi Hassani Poetry & Music Ensemble',
     description:
-      "Formally founded in 1990 by Omar El Moumni (Chatta), Oulad Chatta was born from love and loyalty - a family's promise to keep their grandmother's desert music and poetry alive, breathing, and heard by the world.",
+      'Preserving Sahrawi Hassani Poetry and Music Heritage',
     ctaPrimary: {
-      label: 'Book a Performance',
+      label: 'Book the Group',
       href: '#contact',
     },
     ctaSecondary: {
@@ -121,19 +126,23 @@ export const siteData = {
     bgImageMobile: heroHome,
   },
   ancestry: {
-    subtitle: 'The Lineage',
-    title: 'Born of the Desert,\nCarried by Love',
+    subtitle: '',
+    title: 'Cultural Heritage',
     paragraphs: [
-      'From the hidden treasures of heritage rises the Oulad Chatta Group - a family bound by blood, memory, and an unbreakable love for Hassani, Jalali, and Sahrawi desert music.',
-      'This is not only music. It is a promise.',
-      'A promise to protect the songs of the desert, to honour the voices of the ancestors, and to keep a culture alive for generations yet to come.',
-      'The roots of Oulad Chatta reach back to the late 19th century, to Chatta, the great-grandmother of the group and one of the most powerful Sahrawi poets of southern Morocco, especially in the Tata region.',
-      'In 1895, Chatta travelled from the deep desert to Taroudant, carrying nothing but courage, poetry, and faith. After the loss of her husband, she raised four sons alone, tending camels and sheep under the open sky. At night, she gave her children something greater than survival - words, rhythm, memory, and dignity.',
-      'Through her voice, desert poetry lived. Through her love, culture survived.',
-      'Her four sons carried her songs in their hearts and passed them to their children. The legacy continued through Hammad, who raised seven sons surrounded by poetry, music, and the wisdom of the desert. Generation after generation, the flame was never allowed to fade.',
-      'From this lineage was born the Oulad Chatta Group.',
+      'Oulad Chatta represents a living tradition of Sahrawi Hassani poetry and music, rooted in the cultural identity of the Moroccan desert. Their art form is passed down through generations, preserving oral storytelling, rhythm, and collective memory.',
+      'Through traditional instruments such as the tidinit and tbal, the group expresses themes of desert life, history, migration, and social identity. Each performance is not only music, but a cultural transmission of heritage and knowledge.',
+      'Oulad Chatta plays an important role in safeguarding intangible cultural heritage, ensuring that the voice, poetry, and traditions of the Sahrawi people continue to live and evolve for future generations.',
     ],
-    quote: '"Through her voice, desert poetry lived. Through her love, culture survived."',
+    availabilityTitle: 'Oulad Chatta is available for',
+    availabilityItems: [
+      'International festivals',
+      'Cultural institutions',
+      'Theatre performances',
+      'Heritage and UNESCO programmes',
+      'Touring productions',
+    ],
+    availabilityNote: 'For booking enquiries, please contact our management team.',
+    quote: '',
     image1:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuAv__7cwNmVSMqr1wIqQiRFor8GybTJDufKNYuyjMHBh0a5F-QKT99tnz2qDqQ_XzLCWFMZ2gl1L2PwO09fUYBtLGTfS12usDdB3j9Nrf7mTJLWi4wcIsfdXzKDSM8EDj3pUXDcjuGzRpOO8-_YgjvW70Eqr3pZQmzIKv5CKMtpBu2B2cUgDvM5kpUahowSDlpTq4lVnuX5PKlhZ2FEBhUaavx06Bux-eBGMuHRmrYcW3M38-mEijElfD7MfHMcP1QlGv9TShkQjJKU',
     image2:
@@ -170,12 +179,6 @@ export const siteData = {
         fallbackLabel: 'Al-Habib',
       },
       {
-        name: 'Mohamed Qadir',
-        role: 'Guitarist weaving Hassani and Sahrawi improvisation',
-        image: popoImage,
-        fallbackLabel: 'Mohamed Qadir',
-      },
-      {
         name: 'Hajj Muhammad Outanin',
         role: 'Guitarist bridging desert roots and the world',
         image: hajjImage,
@@ -193,7 +196,7 @@ export const siteData = {
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDSx-PnOWnzsnYct91E4e1E0mYyFUpt4toQAXasoQhoVUK8-3F7FTFyLbcZuvvMtrraq0GoutLrHrKMl2DTT8wwU5OE4MFWMl-slR1ozbYzXvr8TtPZAtYx-4w7t9x_h8beLkHGMpyt4hwpUJw73_auprI1gXOy2EWlOmY3WfCK4SWxv-2-kqqHXUXcJtFmgTmAAa7jSzZLyeiVe8-3zoK32qlCs5w854oRZJchktI3aYxRgHreRmYODCxYHIFbhQSwkAfXWZ-FHdCD',
     subtitle: 'Special Star',
     title: 'Managed with Care and Respect',
-    description: 'Managed with care and respect by Samira under Special Star.',
+    description: 'Managed with care and respect under Special Star.',
     features: [] as Array<{
       title: string;
       description: string;
@@ -201,9 +204,9 @@ export const siteData = {
   },
   inquiries: {
     subtitle: 'Inquiries',
-    title: 'Contact Samira',
+    title: 'Contact',
     description:
-      'For performances, cultural invitations, media requests, and collaborations, reach out to Samira under Special Star using the form or email below.',
+      'For performances, cultural invitations, media requests, and collaborations, reach out through Special Star using the form or email below.',
     contactMethods: [
       {
         label: 'Tel (Morocco)',
@@ -234,15 +237,19 @@ export const siteData = {
     emailDisplay: 'info@specialstarsarl.com',
     submitLabel: 'Send Inquiry',
     successMessage:
-      'Your email app should open with a pre-filled message to info@specialstarsarl.com. If it does not, send your request directly to info@specialstarsarl.com.',
+      'Your inquiry should be sent directly to info@specialstarsarl.com.',
   },
   footer: {
     brand: 'Oulad Chatta Group',
+    instagram: 'https://www.instagram.com/specialstar.worldmusic?igsh=MTRnOGRzbmNtazk5cw==',
     links: [
-      { name: 'Top', href: '#top' },
-      { name: 'Representation', href: '#representation' },
+      { name: 'Home', href: '#top' },
+      { name: 'About', href: '#ensemble' },
+      { name: 'Heritage', href: '#heritage' },
+      { name: 'Booking', href: '#booking' },
       { name: 'Contact', href: '#contact' },
     ],
-    copyright: 'Copyright Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
+    management: 'Managed with care and respect by Samira under Special Star.',
+    copyright: '© Oulad Chatta. All music, poetry, and creative content are protected by copyright.',
   },
 } satisfies SiteData;
